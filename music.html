@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/music.css">
+</head>
+<body>
+    <button class="btn btn-default" id="back">
+        <img src="images/back_black.png" alt="">
+    </button>
+
+    <div class="musicdiv banner">
+        <p class="innertext">Flowers</p>
+        <video muted autoplay loop>
+            <source src="/videos/flower.mp4" type="video/mp4">
+        </video>
+        <audio controls class="nujabes" src="/videos/nujabes.mp3" type="video/mp3">
+        </audio>
+        <h2>
+            NUJABES
+        </h2>
+    </div>
+
+    <div class="musicdiv banner2">
+        <video muted autoplay loop>
+            <source src="/videos/level.mp4" type="video/mp4">
+        </video>
+        <audio controls class="avicii" src="/videos/avicii.mp3" type="video/mp3">
+        </audio>
+        <h2>
+            AVICII
+        </h2>
+    </div>
+
+    <div class="musicdiv banner3">
+        <p class="innertext2">Joss</p>
+        <video muted autoplay loop>
+            <source src="/videos/ink.mp4" type="video/mp4">
+        </video>
+        <audio controls class="avicii" src="/videos/jossstone.mp3" type="video/mp3">
+        </audio>
+        <h2 id="joss">STONE</h2>
+        <br>
+    </div>
+
+    <div class="musicdiv banner4">
+        <p class="innertext">℃</p>
+        <video muted autoplay loop>
+            <source src="/videos/road.mp4" type="video/mp4">
+        </video>
+        <audio controls class="avicii" src="/videos/laybn.mp3" type="video/mp3">
+        </audio>
+        <h2>Lay.bn</h2>
+        <br>
+    </div>
+
+    <div class="musicdiv banner5">
+        <p class="innertext3">기억을 걷는 시간</p>
+        <video muted autoplay loop>
+            <source src="/videos/city.mp4" type="video/mp4">
+        </video>
+        <audio controls class="avicii" src="/videos/nell.mp3" type="video/mp3">
+        </audio>
+        <h2>NELL</h2>
+        <br>
+    </div>
+
+
+    <script>
+
+    $('.banner').on('click',function(){
+        if($('.banner2').css('display') == 'none'){
+            $('.banner2').show();
+            $('.banner').hide();
+        }else{
+            $('.banner2').hide();
+        }
+    });
+
+    $('.banner2').on('click',function(){
+        if($('.banner3').css('display') == 'none'){
+            $('.banner3').show();
+            $('.banner2').hide();
+
+        }else{
+            $('.banner3').hide();
+        }
+    });
+
+    $('.banner3').on('click',function(){
+        if($('.banner4').css('display') == 'none'){
+            $('.banner4').show();
+            $('.banner3').hide();
+
+        }else{
+            $('.banner4').hide();
+        }
+    });
+
+    $('.banner4').on('click',function(){
+        if($('.banner5').css('display') == 'none'){
+            $('.banner5').show();
+            $('.banner4').hide();
+
+        }else{
+            $('.banner5').hide();
+        }
+    });
+
+    $("#back").click(function(){
+        history.go(-1)();
+    });
+    </script>
+
+    
+</body>
+</html>

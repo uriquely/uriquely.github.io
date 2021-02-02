@@ -1,0 +1,312 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+    
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+p {
+    font-weight: 100;
+}
+
+body {
+    text-align: center;
+    height: 768px;
+    background: #FFF;
+}
+
+/* 방명록 영역 */
+#member-login-container {
+    width: 100%;
+    text-align: right;
+    display: block;
+}
+
+.member-login-text {
+    font-weight: bold;
+    padding-right: 0px;
+    font-size: 12px;
+    margin: 0 auto;
+}
+
+input {
+    appearance: none;
+    border: none;
+    font: inherit;
+    margin: 0;
+    outline: none;
+    padding: 0;
+}
+
+input[type='submit'] {
+    cursor: pointer;
+}
+
+    .form input[type='email'],
+    .form input[type='password'] {
+    width: 100%;
+}
+
+form {
+    border: none;
+    text-align: center;
+}
+
+input[type=text], input[type=password] {
+    width: 135px;
+    padding: 7px 7px;
+    display: inline-block;
+    margin-top: 10px;
+    border: 1px solid rgb(146, 146, 146);
+    box-sizing: border-box;
+    font-family: 'open sans';
+    font-size: 12px;
+    color: rgb(179, 179, 179);
+}
+
+button {
+    background-color: rgb(146, 146, 146);
+    color: white;
+    padding: 8px 11px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 65px;
+    font-family: 'open sans';
+    font-size: 12px;
+    outline: none;
+    border-radius: 10px;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+.modal {
+    display: none;
+    position: relative;
+    border: 1px solid rgb(146, 146, 146);
+    margin: 0 auto;
+    width: 400px;
+    height: 350px;
+    overflow: auto;
+}
+.modal.active {
+    display: block;
+}
+
+.guesttext {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.guesttext td {
+    text-overflow: ellipsis;
+}
+
+#guestBookInput{
+    display: inline-block;
+}
+
+#table {
+    display: inline-block;
+}
+
+#guestBook {
+    font-family: 'open sans';
+    font-size: 12px;
+    color: gray;
+}
+
+#show-popup {
+    width: 100px;
+}
+
+#close-popup {
+    position: relative;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+/* 방명록 영역 종료 */
+
+.i {
+    font-weight: 900;
+    color: rgba(255,165,0,.8);
+}
+
+.title {
+    color: rgb(200, 200, 200);
+    font-weight: 900;
+    font-size: 3em;
+}
+
+header {
+    border-top: 50px;
+}
+
+input{
+display: none;
+}
+
+article { 
+    color: rgb(146, 146, 146);
+}
+
+footer p {
+    top: 75px;
+    font-size: 12px;
+    position: relative;
+    color: rgb(255, 255, 255);
+}
+
+footer {
+    position: static;
+    width: 100%;
+    background-color: rgb(200, 200, 200);
+    height: 20%;
+}
+
+label {
+    cursor: pointer;
+    display:inline-block;
+    border: 0px;
+    padding: 10px;
+    margin: 20px;
+    clip-path: circle(50% at 50% 50%);
+}
+
+#c1:hover {
+    box-shadow: coral 10px 10px 10px;
+}
+
+#c1 {
+    background-color: rgba(255,165,0,.8);
+}
+
+#c2 {
+    background-color: rgba(144,238,144,.8);
+}
+
+#c3 {
+    background-color: rgba(240,128,128,.8);
+}
+
+#c4 {
+    background-color: rgba(139,0,0,.8);
+}
+
+#c5 {
+    background-color: rgba(0, 123, 139, 0.8);
+}
+
+#c6 {
+    background-color: rgba(0,100,0,.8);
+}
+
+.cube-wrap {
+    perspective: 1000px;
+    width: 200px;
+    height: 200px;
+    position: relative;
+    margin: 3em auto;
+    margin-top: 75px;
+}
+
+.cube {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    transition: all 1s
+}
+
+.layer {
+    color: #FFF;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5em;
+    font-weight: 500;
+    line-height: 200px;
+}
+
+/* 정육면체의 평면이었던 각 면을 3D 변환시 각 위치로 돌리는 과정 */
+.front {
+    background-color: rgba(255,165,0,.8);
+    transform: rotateY(0) translateZ(100px);
+}
+
+.back {
+    background-color: rgba(240,128,128,.8);
+    transform: rotateY(180deg) translateZ(100px);
+}
+
+.right {
+    background-color: rgba(144,238,144,.8);
+    transform: rotateY(90deg) translateZ(100px);
+}
+
+.left {
+    background-color: rgba(0, 123, 139, 0.8);
+    transform: rotateY(-90deg) translateZ(100px);
+}
+
+.top {
+    background-color: rgba(139,0,0,.8);
+    transform: rotateX(90deg) translateZ(100px);
+}
+
+.bottom {
+    background-color: rgba(0,100,0,.8);
+    transform: rotateX(-90deg) translateZ(100px);
+}
+
+.top,.bottom{
+    color: white
+}
+
+/* 클릭 시 돌아가는 방향 */
+#front:checked ~ .cube-wrap .cube {
+    transform: translateZ(0px) rotateY(0deg);
+}
+
+#back:checked ~ .cube-wrap .cube {
+    transform: translateZ(0px) rotateY(180deg);
+}
+
+#right:checked ~ .cube-wrap .cube {
+    transform: translateZ(0px) rotateY(-90deg);
+}
+
+#left:checked ~ .cube-wrap .cube {
+    transform: translateZ(0px) rotateY(90deg);
+}
+
+#top:checked ~ .cube-wrap .cube {
+    transform: translateZ(0px) rotateX(-90deg);
+}
+
+#bottom:checked ~ .cube-wrap .cube {
+    transform: translateZ(0px) rotateX(90deg);
+}
+
+input[type="radio"] {
+    margin: 1em 1em;
+}
+
+.layer > a { 
+    font-weight: 100;
+    text-decoration: none; 
+    }
+.layer a:link {color :rgba(255, 255, 255, 0.74)}
+.layer a:visited {color:rgba(255, 255, 255, 0.74)}
+.layer a:hover {color:rgb(80, 79, 79, 0.74)}
+.layer a:active {color:rgba(97, 90, 90, 0.74)}

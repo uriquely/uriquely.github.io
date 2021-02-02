@@ -1,0 +1,103 @@
+.btn img {
+        width: 100%;
+        height: 100%;
+ }
+.btn {
+        width:50px;
+        height: 50px;
+        padding: 0px;
+        background-color: transparent;
+        background-image: none;
+        border-color: transparent;
+        border: none;
+        outline: none;
+        color: #FFFFFF;
+        position:fixed;
+        left:1%;
+        top:1%;
+        z-index:1;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: sans-serif;
+}
+
+::selection {
+        background: transparent;
+}
+
+#container {
+    display: table;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.black {
+    background: #111;
+    color: #eee;
+}
+
+.white {
+    background: #eee;
+    color: #111;
+}
+
+#result {
+    display: table-cell;
+    vertical-align: middle;
+    font: bold 150px sans-serif;
+    text-transform: lowercase;
+}
+
+#result:hover {
+    cursor: pointer;
+}
+
+.black .active {
+    background: rgb(250, 154, 10);
+}
+
+.active {
+    background: #fafafa;
+}
+
+#changecolor {
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 25px;
+    z-index: 1000;
+    opacity: 0;
+}
+
+#changecolor:hover {
+        cursor: pointer;
+        opacity: 1;
+}
+
+#changecolor:focus {
+    outline: none;
+}
+
+#changecolor:active {
+    background: #888;
+}
+
+.cwhite {
+    background: #fff;
+}
+
+.cblack {
+    background: rgb(43, 43, 43);
+}

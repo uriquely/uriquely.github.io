@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>introduce</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/introduce.css">
+</head>
+<body>
+    <div id="container" class="black">
+        <div id="result"></div>
+        <button id="changecolor" class="cwhite"></button>
+    </div>
+
+    <button class="btn btn-default" id="back">
+        <img src="images/back_white.png" alt="">
+    </button>
+
+    <script>
+
+    var words = [
+        'female', 'inchoen', 'uri', '1991', 'yee'
+        ];
+
+    function randomWord() {
+        var randWord = words[Math.floor(Math.random() * words.length)];
+        return $('#result').text(randWord);
+        }
+
+        randomWord();
+
+        $('#result').on('mousedown', function() {
+        $('#result').addClass('active');
+        });
+
+        $('#result').on('mouseup', function() {
+        $('#result').removeClass('active');
+        
+        randomWord();
+    });
+
+    $('#changecolor').click(function() {
+        $('#container').toggleClass('black', 'white');
+        $('#changecolor').toggleClass('cblack', 'cwhite');
+        $(this).blur();
+    });
+
+    $("#back").click(function(){
+        history.go(-1)();
+    });
+    </script>
+</body>
+</html>

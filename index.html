@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URI</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+
+    <header>
+        <p class="title">UR<span class="i">I</span>QUELY</p>
+        <div class="member-login-container">
+            <button id="show-popup">guest book</button>
+        </div>
+        <div class="modal" id="modal-id">
+            <form id="table" autocomplete="off" action="javascript:saveGuestBook();">
+                <table id="guestBookInput">
+                    <tr>
+                        <td><input type="text" name="userName" id="userName" placeholder="Enter Nickname" required></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="userMemo" id="userMemo" placeholder="Enter Comment" required></input></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button id="ok" type="submit">ok</button>
+                            <button id="close-popup">close</button>
+                        </td>
+                    </tr>
+                </table>
+                <hr>
+                <div>
+                <table class="guesttext" id="guestBook"></table>
+                </div>
+            </form>
+        </div>
+    </header>
+
+    <article>
+        <p>Push color and the box rotates!</p>
+        <input type="radio" name="cube" id="front" onclick="document.querySelector('.i').style.color='rgba(255,165,0,0.8)'">
+        <label for="front" class="a" id="c1"></label>
+        <input type="radio" name="cube" id="right" onclick="document.querySelector('.i').style.color='rgba(144,238,144,.8)'">
+        <label for="right" id="c2"></label>
+        <input type="radio" name="cube" id="back" onclick="document.querySelector('.i').style.color='rgba(240,128,128,.8)'">
+        <label for="back" id="c3"></label>
+        <input type="radio" name="cube" id="top" onclick="document.querySelector('.i').style.color='rgba(139,0,0,.8)'">
+        <label for="top" id="c4"></label>
+        <input type="radio" name="cube" id="left" onclick="document.querySelector('.i').style.color='rgba(0, 123, 139, 0.8)'">
+        <label for="left" id="c5"></label>
+        <input type="radio" name="cube" id="bottom" onclick="document.querySelector('.i').style.color='rgba(0,100,0,.8)'">
+        <label for="bottom" id="c6"></label>
+
+    <div class="cube-wrap">
+        <div class="cube">
+        <div class="layer front"><a href="introduce.html">About me</a></div>
+        <div class="layer back"><a href="introduce.html">About me</a></div>
+        <div class="layer right"><a href="music.html">Muzic</a></div>
+        <div class="layer left"><a href="music.html">Muzic</a></div>
+        <div class="layer top"><a href="roadmap.html">Roadmap</a></div>
+        <div class="layer bottom"><a href="roadmap.html">Roadmap</a></div>
+        </div>
+    </div>
+    </article>
+
+    <footer>
+        <div>
+            <p>Copyright ⓒ 2021. URI All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+    $("#show-popup").on("click", function(){
+        $(".modal").addClass("active");
+    });
+
+    $("#close-popup").on("click", function(){
+        $(".modal").removeClass("active");
+    });
+
+    function saveGuestBook(){
+        var guestBook = new GuestBook($(userName).val(), $(userMemo).val());
+        console.log(guestBook);
+
+        //기존데이터 가져오기. 존재하지 않을 때만 새 배열 생성
+        var arr = JSON.parse(localStorage.getItem("arr"));
+
+        //처음 추가할 때에는 arr이 null일테니 조건을 제시해준다.
+        if(arr == null) arr = [];
+
+        arr.push(guestBook);
+        console.log(arr);
+
+        //배열로 저장
+        var jsonStr = JSON.stringify(arr);
+        localStorage.setItem("arr", jsonStr);
+
+        //초기화
+        $(userName).val('').focus();
+        $(userMemo).val('');
+
+        //새로입력된 정보로 갱신
+        loadGuestBook();
+    }
+
+    //생성자함수
+    function GuestBook(name, memo){
+        this.name = name;
+        this.memo = memo;
+        this.time = new Date().getTime(); //unix second로 시간 관리
+    }
+
+    /**
+     * html DOM등록을 마치면(load), localStorage의 데이터를 읽어서 테이블로 출력한다.
+     */
+    //방문자 정보 화면 출력하기 : 온로드 함수 꼭 필요
+    $(function(){
+        loadGuestBook();
+    });
+
+    /**
+     * 화면 최초 로딩 시, 방문자 정보 새로 추가 시 호출되어
+     * 화면에 방명록 정보를 표시한다.
+     */
+    function loadGuestBook(){
+        var arr= JSON.parse(localStorage.getItem("arr"));
+        var $guestBook = $(guestBook); //테이블태그
+
+        //헤더 추가
+        $guestBook.html("<tr><th>no</th><th>name</th><th>comment</th><th>date</th></tr>");
+
+        //내용 추가
+        //최초로 가져올 때에는 arr이 null일테니 분기처리가 필요
+        if(arr == null){
+            $guestBook.append("<tr><td colspan='4'>방문자가 없습니다</td></tr>")
+        }
+        else{
+            arr.reverse();
+            //웹스토리지에서 가져온 arr을 순회하기 위해 each사용
+            $.each(arr, function(index, elem){
+                
+                //unix초가 들어가 있으니 date 객체로 바꾸어야 함
+                var date = new Date(elem.time);
+
+                var tr = "<tr>";
+                tr += "<td>" + (index + 1) + "</td>";
+                tr += "<td>" + elem.name + "</td>";
+                tr += "<td>" + elem.memo.replaceAll("\n", "<br>") + "</td>";
+                tr += "<td>" + displayTime(date) + "</td>";
+                tr += "</tr>";
+
+                //테이블에다 보내는 법
+                $guestBook.append(tr);
+            });
+        }
+    }
+
+    // 2021/01/28 11:50 형식으로 표현
+    function displayTime(date){
+        return date.getFullYear() + "/" + (date.getMonth() + 1) + "/"
+                + date.getDate();
+    }
+    </script>
+
+</body>
+</html>

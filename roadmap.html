@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="css/roadmap.css">
+</head>
+<body>
+
+    <button class="btn btn-default" id="back">
+        <img src="images/back_black.png" alt="">
+    </button>
+
+    <div class="container" id="box">
+        <div class="panel gradient-border p1 active">
+          <h1>JAVA</h1>
+        </div>
+        <div class="panel gradient-border p2">
+          <h1>JDBC</h1>
+        </div>
+        <div class="panel gradient-border p3">
+          <h1>ORACLE</h1>
+        </div>
+        <div class="panel gradient-border p4">
+          <h1>WEB CLIENT</h1>
+        </div>
+        <div class="panel gradient-border p5">
+          <h1>Github</h1>
+        </div>
+    </div>
+
+    <script>
+    var panels = document.querySelectorAll('.panel');
+
+    panels.forEach(panel => {
+        panel.addEventListener('click', () => {
+            removeActiveClasses();
+            panel.classList.add('active');
+        });
+    });
+
+    function removeActiveClasses() {
+        panels.forEach(panel => {
+            panel.classList.remove('active');
+        });
+    }
+
+    $("#back").click(function(){
+        history.go(-1)();
+    });
+    </script>
+
+</body>
+</html>
